@@ -44,3 +44,27 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
+  
+  merge-to-master:
+    runs-on: ubuntu-latest
+    needs: security-scan-codeql
+    steps:
+    - name: Merge Validation
+      run: echo "Kode lolos build, test, dan security scan. Siap dirilis!"
+
+  create-release:
+    runs-on: ubuntu-latest
+    needs: merge-to-master
+    permissions:
+      contents: write # Izin untuk membuat rilis di GitHub
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: v1.0.${{ github.run_number }}
+        name: Release v1.0.${{ github.run_number }}
+        body: "Rilis otomatis dari GitHub Actions CI/CD Pipeline Tugas."
+        generate_release_notes: true
