@@ -1,0 +1,5 @@
+# Created at 2026-05-19T13:27:42.559
+Boot Manifest-JAR contains absolute paths in classpath 'D:\Kuliah\Semester 6\pengujian pl\pratikum\TUBES-Dasar-PBO-master\TUBES-Dasar-PBO-master\tubess\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+
